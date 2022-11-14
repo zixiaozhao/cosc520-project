@@ -1,2 +1,2 @@
-# COSC590_Project
+# cosc520-project
 Polynomial multiplication
