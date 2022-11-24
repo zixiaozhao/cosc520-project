@@ -2,18 +2,43 @@
 layout: default
 title: Home
 ---
+
 <h1>Polynomial Multiplication</h1>
 
 <h2>Inputs:</h2>
-<p>Please input two polynomials below.</p>
+<p>
+  Please input coefficients for the two polynomials below.<br>
+  Click the "Multipy" button to multiply the polynomials.
+</p>
 
-<h3>Polynomial 1:</h3>
+<form>
+  <div>
+    Polynomial One: 
+    <input type="text" name="polyOne[]" class="poly-input" value="0"> x^4 +
+    <input type="text" name="polyOne[]" class="poly-input" value="0"> x^3 +
+    <input type="text" name="polyOne[]" class="poly-input" value="0"> x^2 +
+    <input type="text" name="polyOne[]" class="poly-input" value="0"> x +
+    <input type="text" name="polyOne[]" class="poly-input" value="0">
+  </div>
+  <div>
+    Polynomial Two:
+    <input type="text" name="polyTwo[]" class="poly-input" value="0"> x^4 +
+    <input type="text" name="polyTwo[]" class="poly-input" value="0"> x^3 +
+    <input type="text" name="polyTwo[]" class="poly-input" value="0"> x^2 +
+    <input type="text" name="polyTwo[]" class="poly-input" value="0"> x +
+    <input type="text" name="polyTwo[]" class="poly-input" value="0">
+  </div>
+  <br>
+  <button type="button" name="multiply" onclick="multiplyPolynomials()">Multiply</button>
+</form>
 
-<h3>Polynomial 2:</h3>
-
+<br>
 <h2>Results:</h2>
-<p>The results of the multiplication are below.</p>
 
 <h3>Naive Alogorithm:</h3>
+<p id="naive-output"></p>
 
 <h3>FFT Algorithm:</h3>
+<p id="fft-output"></p>
+
+<script type="text/javascript" src="assets/js/index.js"></script>
