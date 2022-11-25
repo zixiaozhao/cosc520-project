@@ -15,9 +15,18 @@ Two polynomial multiplication algorithms have been implemented: a naive algorith
 
 ## Testing
 
-### Running Unit Tests
+### Unit Tests on Algorithms
 
-...
+This section describes how to test the JavaScript implementations of the two polynomial multiplication algorithms. The testing is performed with Jest. Both versions of the algorithm are tested by the same test file.
+
+#### Prerequisites
+
+To run the unit tests, you must have [Node.js](https://nodejs.org/en/), [npm](https://www.npmjs.com), and [Jest](https://jestjs.io) installed.
+
+#### Running Unit Tests
+
+To run all of the unit tests, execute `npm test` in the project directory.
+To run a single unit test, execute `npm test -- -t '<test string>'`
 
 ### Preview Site Development Changes Locally
 
