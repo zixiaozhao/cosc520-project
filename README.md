@@ -25,8 +25,11 @@ To run the unit tests, you must have [Node.js](https://nodejs.org/en/), [npm](ht
 
 #### Running Unit Tests
 
-To run all of the unit tests, execute `npm test` in the project directory.
-To run a single unit test, execute `npm test -- -t '<test string>'`
+The commands below are executed in the project directory.
+
+- To run all of the unit tests --> `npm test`
+- To run a single unit test --> `npm test -- -t '<test string>'`
+- To generate a coverage report --> `npm test -- --coverage`
 
 ### Preview Site Development Changes Locally
 
