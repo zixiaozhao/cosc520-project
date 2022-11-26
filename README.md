@@ -21,7 +21,10 @@ This section describes how to test the JavaScript implementations of the two pol
 
 #### Prerequisites
 
-To run the unit tests, you must have [Node.js](https://nodejs.org/en/), [npm](https://www.npmjs.com), and [Jest](https://jestjs.io) installed.
+To run the unit tests, you must have [Node.js](https://nodejs.org/en/), [npm](https://www.npmjs.com).
+Then [Jest](https://jestjs.io) and Babel envrionment presets can be installed by executing the following commands:
+`npm install --save-dev jest`
+`npm install --save-dev @babel/preset-env`
 
 #### Running Unit Tests
 
