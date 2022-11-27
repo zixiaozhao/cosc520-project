@@ -34,6 +34,19 @@ The commands below are executed in the project directory.
 - To run a single unit test --> `npm test -- -t '<test string>'`
 - To generate a coverage report --> `npm test -- --coverage`
 
+#### Coverage Report
+
+If the coverage flag is used when running the unit tests, a coverage report is generated.
+
+A folder named `coverage` is created in the root of the project directory.
+Navigate to the `index.html` file found under the `Icov-report` folder and open it in your favourite web broswer to see the results.
+
+```
+|- coverage/
+  |- Icov-report/
+    |- index.html
+```
+
 ### Preview Site Development Changes Locally
 
 To preview site development changes locally before deploying through GitHub, follow these instructions:
