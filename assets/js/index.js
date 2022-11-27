@@ -3,9 +3,17 @@ import * as naive from "./naive.js";
 
 // Add event listeners.
 document
-  .getElementById("multiply-btn")
+  .getElementById("btn-multi")
   .addEventListener("click", multiplyPolynomials);
-document.getElementById("clear-btn").addEventListener("click", clearResults);
+document
+  .getElementById("btn-perf")
+  .addEventListener("click", runPerformanceTest);
+document
+  .getElementById("btn-clr-multi")
+  .addEventListener("click", clearMultiplicationResults);
+document
+  .getElementById("btn-clr-perf")
+  .addEventListener("click", clearPerformanceResults);
 
 // Event listener functions
 function multiplyPolynomials() {
@@ -18,14 +26,50 @@ function multiplyPolynomials() {
   var fftArr = polyTwo;
 
   // Display the output string in the browser window.
-  document.getElementById("naive-output").innerHTML = printPolynomial(naiveArr);
-  document.getElementById("fft-output").innerHTML = printPolynomial(fftArr);
+  document.getElementById("results-multi-naive").innerHTML =
+    printPolynomial(naiveArr);
+  document.getElementById("results-multi-fft").innerHTML =
+    printPolynomial(fftArr);
 }
 
-function clearResults() {
+function runPerformanceTest() {
+  // Retrieve polynomial coefficients from import form.
+  const [polyOne, polyTwo] = transformPolynomialFormInputs();
+
+  // Run timing tests.
+  const iterations = 10000;
+
+  // Naive algorithm.
+  const t0 = performance.now();
+  for (var i = 0; i < iterations; i++) {
+    naive.multiply(polyOne, polyTwo);
+  }
+  const t1 = performance.now();
+
+  // FFT algorithm.
+  // const t2 = performance.now();
+  // for (var i = 0; i < iterations; i++) {
+  //   fft.multiply(polyOne, polyTwo);
+  // }
+  // const t3 = performance.now();
+
+  // Calculate and display results in the browser window.
+  document.getElementById("results-perf-naive").innerHTML =
+    (t1 - t0).toFixed(2) + " ms";
+  // document.getElementById("results-perf-fft").innerHTML =
+  //   (t3 - t2).toFixed(2) + " ms";
+}
+
+function clearMultiplicationResults() {
   // Clear the output string in the browser window.
-  document.getElementById("naive-output").innerHTML = "-";
-  document.getElementById("fft-output").innerHTML = "-";
+  document.getElementById("results-multi-naive").innerHTML = "-";
+  document.getElementById("results-multi-fft").innerHTML = "-";
+}
+
+function clearPerformanceResults() {
+  // Clear the output string in the browser window.
+  document.getElementById("results-perf-naive").innerHTML = "-";
+  document.getElementById("results-perf-fft").innerHTML = "-";
 }
 
 // Helper functions

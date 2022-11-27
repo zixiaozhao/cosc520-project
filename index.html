@@ -29,18 +29,36 @@ title: Home
     <input type="text" name="polyTwo[]" class="poly-input" value="0" />
   </div>
   <br />
-  <button type="button" id="multiply-btn">Multiply</button>
+  <button type="button" id="btn-multi">Multiply</button>
 </form>
 
 <br />
 <h2>Results:</h2>
+<h3>Naive Alogorithm:</h3>
+<p id="results-multi-naive">-</p>
+<h3>FFT Algorithm:</h3>
+<p id="results-multi-fft">-</p>
+<button type="button" id="btn-clr-multi">Clear</button>
+<br /><br />
+
+<hr />
+<h1>Performance Testing</h1>
+<p>
+  A performance test can be run by clicking the button below. Polynomial
+  multiplication is performed for each algorithm 10,000 times using the
+  polynomials entered in the form above as input. The total time taken to
+  perform the multiplications for each algorithm is displayed below.
+</p>
+
+<button type="button" id="btn-perf">Run Test</button>
+<br /><br />
 
 <h3>Naive Alogorithm:</h3>
-<p id="naive-output">-</p>
+<p id="results-perf-naive">-</p>
 
 <h3>FFT Algorithm:</h3>
-<p id="fft-output">-</p>
+<p id="results-perf-fft">-</p>
 
-<button type="button" id="clear-btn">Clear</button>
+<button type="button" id="btn-clr-perf">Clear</button>
 
 <script type="module" src="assets/js/index.js"></script>
