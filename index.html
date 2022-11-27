@@ -47,18 +47,57 @@ title: Home
 <hr />
 <h2>Performance Testing</h2>
 <p>
-  A performance test can be run by clicking the button below. Polynomial
-  multiplication is performed for each algorithm 10,000 times using the
-  polynomials entered in the form above as input. The total time taken to
-  perform the multiplications for each algorithm is displayed below.
+  A performance test can be run by clicking the button below. Eight test cases
+  are run. For each test case, the number of elements in the polynomial
+  coefficient array increases. Each test case is run for 25 iterations and the
+  average time to perform the multiplecation operation is calculated. The
+  results are displayed in the table below.<br /><br />
+  It may take a minute or two for the testing to complete. Testing progress can
+  be monitored in the console.
 </p>
 <button type="button" id="btn-perf">Run Test</button>
 <br /><br />
 <h3>Results</h3>
-<h4>Naive Alogorithm:</h4>
-<p id="results-perf-naive">-</p>
-<h4>FFT Algorithm:</h4>
-<p id="results-perf-fft">-</p>
+
+<table>
+  <tr>
+    <th colspan="9">Average Time Per Operation [ms]</th>
+  </tr>
+  <tr>
+    <th>Iterations:</th>
+    <th>10</th>
+    <th>100</th>
+    <th>500</th>
+    <th>1,000</th>
+    <th>2,500</th>
+    <th>5,000</th>
+    <th>7,500</th>
+    <th>10,000</th>
+  </tr>
+  <tr>
+    <td>Naive:</td>
+    <td id="results-perf-naive-0">-</td>
+    <td id="results-perf-naive-1">-</td>
+    <td id="results-perf-naive-2">-</td>
+    <td id="results-perf-naive-3">-</td>
+    <td id="results-perf-naive-4">-</td>
+    <td id="results-perf-naive-5">-</td>
+    <td id="results-perf-naive-6">-</td>
+    <td id="results-perf-naive-7">-</td>
+  </tr>
+  <tr>
+    <td>FFT:</td>
+    <td id="results-perf-fft-0">-</td>
+    <td id="results-perf-fft-1">-</td>
+    <td id="results-perf-fft-2">-</td>
+    <td id="results-perf-fft-3">-</td>
+    <td id="results-perf-fft-4">-</td>
+    <td id="results-perf-fft-5">-</td>
+    <td id="results-perf-fft-6">-</td>
+    <td id="results-perf-fft-7">-</td>
+  </tr>
+</table>
+
 <button type="button" id="btn-clr-perf">Clear</button>
 
 <script type="module" src="assets/js/index.js"></script>

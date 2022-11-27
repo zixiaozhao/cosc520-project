@@ -32,31 +32,63 @@ function multiplyPolynomials() {
 }
 
 function runPerformanceTest() {
-  // Retrieve polynomial coefficients from import form.
-  const [polyOne, polyTwo] = transformPolynomialFormInputs();
+  // Define the list of input array lengths and the maximum value in each.
+  const inputLengths = [10, 100, 500, 1000, 2500, 5000, 7500, 10000];
+  const maxValue = 100;
+
+  // Generate input arrays of random integers at the defined lengths.
+  // The array values will be whole numbers ranging from 0 to maxValue-1.
+  var polyOneArrs = [];
+  var polyTwoArrs = [];
+  for (var i = 0; i < inputLengths.length; i++) {
+    polyOneArrs.push(
+      Array.from({ length: inputLengths[i] }, () =>
+        Math.floor(Math.random() * maxValue)
+      )
+    );
+    polyTwoArrs.push(
+      Array.from({ length: inputLengths[i] }, () =>
+        Math.floor(Math.random() * maxValue)
+      )
+    );
+  }
 
   // Run timing tests.
-  const iterations = 10000;
+  const iterations = 25;
+  var avgTimesNaive = [];
+  var avgTimesFFT = [];
+  var start = 0;
+  var stop = 0;
 
-  // Naive algorithm.
-  const t0 = performance.now();
-  for (var i = 0; i < iterations; i++) {
-    naive.multiply(polyOne, polyTwo);
+  for (var i = 0; i < inputLengths.length; i++) {
+    console.log("Running test case: " + (i + 1));
+
+    // Test naive algorithm.
+    start = performance.now();
+    for (var j = 0; j < iterations; j++) {
+      console.log("...testing naive algorithm");
+      naive.multiply(polyOneArrs[i], polyTwoArrs[i]);
+    }
+    stop = performance.now();
+    avgTimesNaive.push((stop - start) / iterations);
+
+    // Test FFT algorithm.
+    start = performance.now();
+    for (var j = 0; j < iterations; j++) {
+      console.log("...testing fft algorithm");
+      // fft.multiply(polyOneArrs[i], polyTwoArrs[i]);
+    }
+    stop = performance.now();
+    avgTimesFFT.push((stop - start) / iterations);
   }
-  const t1 = performance.now();
-
-  // FFT algorithm.
-  // const t2 = performance.now();
-  // for (var i = 0; i < iterations; i++) {
-  //   fft.multiply(polyOne, polyTwo);
-  // }
-  // const t3 = performance.now();
 
   // Calculate and display results in the browser window.
-  document.getElementById("results-perf-naive").innerHTML =
-    (t1 - t0).toFixed(2) + " ms";
-  // document.getElementById("results-perf-fft").innerHTML =
-  //   (t3 - t2).toFixed(2) + " ms";
+  for (var i = 0; i < inputLengths.length; i++) {
+    document.getElementById("results-perf-naive-" + i).innerHTML =
+      avgTimesNaive[i].toFixed(3);
+    // document.getElementById("results-perf-fft-" + i).innerHTML =
+    //   avgTimesFFT[i].toFixed(3);
+  }
 }
 
 function clearMultiplicationResults() {
@@ -66,9 +98,16 @@ function clearMultiplicationResults() {
 }
 
 function clearPerformanceResults() {
-  // Clear the output string in the browser window.
-  document.getElementById("results-perf-naive").innerHTML = "-";
-  document.getElementById("results-perf-fft").innerHTML = "-";
+  // Determine the number of data columns in the table.
+  const columns = document.querySelectorAll(
+    '[id^="results-perf-naive-"]'
+  ).length;
+
+  // Loop through and clear table data in the browser window.
+  for (var i = 0; i < columns; i++) {
+    document.getElementById("results-perf-naive-" + i).innerHTML = "-";
+    document.getElementById("results-perf-fft-" + i).innerHTML = "-";
+  }
 }
 
 // Helper functions
