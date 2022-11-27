@@ -17,6 +17,10 @@ The FFT algorithm is more efficient approach to polynomial multiplication. It re
 
 For more information, see the [Fast Fourier Transformation for polynomial multiplication](https://www.geeksforgeeks.org/fast-fourier-transformation-poynomial-multiplication/) post at GeeksforGeeks.
 
+## Demonstration
+
+A browser based demonstration where users can enter polynomial coefficients (up to x^4) and see the result of the multiplication was created. This demonstration can be accessed by navigating to: [https://zixiaozhao.github.io/cosc520-project/](https://zixiaozhao.github.io/cosc520-project/)
+
 ## Testing
 
 ### Unit Tests on Algorithms
