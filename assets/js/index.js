@@ -7,9 +7,31 @@ document
   .addEventListener("click", multiplyPolynomials);
 document.getElementById("clear-btn").addEventListener("click", clearResults);
 
+// Event listener functions
 function multiplyPolynomials() {
-  var inputOne = document.getElementsByName("polyOne[]");
-  var inputTwo = document.getElementsByName("polyTwo[]");
+  // Retrieve polynomial coefficients from import form.
+  const [polyOne, polyTwo] = transformPolynomialFormInputs();
+
+  // Multiply the polynomials.
+  var naiveArr = naive.multiply(polyOne, polyTwo);
+  // var fftArr = fft.multiply(polyOne, polyTwo);
+  var fftArr = polyTwo;
+
+  // Display the output string in the browser window.
+  document.getElementById("naive-output").innerHTML = printPolynomial(naiveArr);
+  document.getElementById("fft-output").innerHTML = printPolynomial(fftArr);
+}
+
+function clearResults() {
+  // Clear the output string in the browser window.
+  document.getElementById("naive-output").innerHTML = "-";
+  document.getElementById("fft-output").innerHTML = "-";
+}
+
+// Helper functions
+function transformPolynomialFormInputs() {
+  const inputOne = document.getElementsByName("polyOne[]");
+  const inputTwo = document.getElementsByName("polyTwo[]");
   var polyOne = [];
   var polyTwo = [];
 
@@ -17,34 +39,13 @@ function multiplyPolynomials() {
   for (var i = 0; i < inputOne.length; i++) {
     polyOne.push(inputOne[i].value);
   }
-
   for (var i = 0; i < inputTwo.length; i++) {
     polyTwo.push(inputTwo[i].value);
   }
 
   // Reverse coefficient order so that it matches the expected inputs for the
-  // polynomial multiplication algorithms.
-  polyOne.reverse();
-  polyTwo.reverse();
-
-  // Multiply the polynomials.
-  var naiveArr = naive.multiply(polyOne, polyTwo);
-  // var fftArr = fft.multiply(polyOne, polyTwo);
-  var fftArr = polyTwo;
-
-  // Convert results from a coefficient array to an output string.
-  var naiveStr = printPolynomial(naiveArr);
-  var fftStr = printPolynomial(fftArr);
-
-  // Display the output string in the browser window.
-  document.getElementById("naive-output").innerHTML = naiveStr;
-  document.getElementById("fft-output").innerHTML = fftStr;
-}
-
-function clearResults() {
-  // Clear the output string in the browser window.
-  document.getElementById("naive-output").innerHTML = "-";
-  document.getElementById("fft-output").innerHTML = "-";
+  // polynomial multiplication algorithms, and return.
+  return [polyOne.reverse(), polyTwo.reverse()];
 }
 
 function printPolynomial(poly) {
