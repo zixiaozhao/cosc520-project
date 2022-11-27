@@ -4,10 +4,11 @@ title: Home
 ---
 
 <h1>Polynomial Multiplication</h1>
-<hr />
-
 <h2>Inputs</h2>
-<p>Please input coefficients for the two polynomials below.</p>
+<p>
+  Please input coefficients for the two polynomials below. <br />
+  Multiplication can be run by clicking the button below.
+</p>
 <form>
   <div>
     Polynomial One:
@@ -27,44 +28,38 @@ title: Home
   </div>
 </form>
 <br />
-
-<hr />
-<h2>Multiplication</h2>
-<p>
-  Polynomial multiplication can be run by clicking the button below. The
-  polynomial inputs are taken from the form above.
-</p>
 <button type="button" id="btn-multi">Multiply</button>
 <br /><br />
-<h3>Results</h3>
-<h4>Naive Alogorithm:</h4>
+<h2>Results</h2>
+<h3>Naive Alogorithm:</h3>
 <p id="results-multi-naive">-</p>
-<h4>FFT Algorithm:</h4>
+<h3>FFT Algorithm:</h3>
 <p id="results-multi-fft">-</p>
 <button type="button" id="btn-clr-multi">Clear</button>
 <br /><br />
 
 <hr />
-<h2>Performance Testing</h2>
+<h1>Performance Testing</h1>
 <p>
-  A performance test can be run by clicking the button below. Eight test cases
-  are run. For each test case, the number of elements in the polynomial
-  coefficient array increases. Each test case is run for 25 iterations and the
-  average time to perform the multiplecation operation is calculated. The
-  results are displayed in the table below.<br /><br />
-  It may take a minute or two for the testing to complete. Testing progress can
-  be monitored in the console.
+  A performance test can be run by clicking the button below.<br /><br />
+  Eight test cases are run. For each test case, the number of elements in the
+  polynomial coefficient arrays increases. The values of the coefficients are
+  randomly generated values between 0 and 99. Each test case is run for 25
+  iterations and the average time to perform the multiplication operation is
+  calculated. <br /><br />
+  The results are displayed in the table below. It may take a minute or two for
+  the testing to complete. Testing progress can be monitored in the console.
 </p>
 <button type="button" id="btn-perf">Run Test</button>
 <br /><br />
-<h3>Results</h3>
 
+<h2>Results</h2>
 <table>
   <tr>
-    <th colspan="9">Average Time Per Operation [ms]</th>
+    <th colspan="9">Average Time Per Multiplication Operation [ms]</th>
   </tr>
   <tr>
-    <th>Iterations:</th>
+    <th>Coefficients:</th>
     <th>10</th>
     <th>100</th>
     <th>500</th>
@@ -97,7 +92,6 @@ title: Home
     <td id="results-perf-fft-7">-</td>
   </tr>
 </table>
-
 <button type="button" id="btn-clr-perf">Clear</button>
 
 <script type="module" src="assets/js/index.js"></script>
