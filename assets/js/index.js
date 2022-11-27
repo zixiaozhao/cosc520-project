@@ -1,10 +1,11 @@
 import * as naive from "./naive.js";
 // import * as fft from "./fft.js";
 
-// Add event listener for the multiply button
+// Add event listeners.
 document
   .getElementById("multiply-btn")
   .addEventListener("click", multiplyPolynomials);
+document.getElementById("clear-btn").addEventListener("click", clearResults);
 
 function multiplyPolynomials() {
   var inputOne = document.getElementsByName("polyOne[]");
@@ -38,6 +39,12 @@ function multiplyPolynomials() {
   // Display the output string in the browser window.
   document.getElementById("naive-output").innerHTML = naiveStr;
   document.getElementById("fft-output").innerHTML = fftStr;
+}
+
+function clearResults() {
+  // Clear the output string in the browser window.
+  document.getElementById("naive-output").innerHTML = "-";
+  document.getElementById("fft-output").innerHTML = "-";
 }
 
 function printPolynomial(poly) {
