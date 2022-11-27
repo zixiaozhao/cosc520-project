@@ -6,7 +6,7 @@
 */
 
 // Import algorithm functions to be tested.
-import * as naive from "../assets/js/gfg-naive.js";
+import * as naive from "../assets/js/naive.js";
 // import * as fft from "../assets/js/fft.js";
 
 // const algos = [naive.multiply, fft.multiply];

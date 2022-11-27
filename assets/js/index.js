@@ -1,4 +1,4 @@
-import * as naive from "./gfg-naive.js";
+import * as naive from "./naive.js";
 // import * as fft from "./fft.js";
 
 // Add event listener for the multiply button
