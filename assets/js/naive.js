@@ -6,7 +6,7 @@
   point. Some modifications were made as required for the associated project.
 
   Source: https://www.geeksforgeeks.org/multiply-two-polynomials-2/
-  Author: Unknown
+  Code Author: Unknown
   Copyright: https://www.geeksforgeeks.org/copyright-information/
   Licence: https://creativecommons.org/licenses/by-sa/2.0/
 */
