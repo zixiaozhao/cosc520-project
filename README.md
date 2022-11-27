@@ -62,7 +62,7 @@ To preview site development changes locally before deploying through GitHub, fol
 
 The publishing source for this repo is the `main` branch.
 
-### Licence
+## Licence
 
 This work is licensed under a
 [Creative Commons Attribution-ShareAlike 4.0 International License][cc-by-sa].
