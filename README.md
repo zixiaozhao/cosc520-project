@@ -7,11 +7,15 @@ Two polynomial multiplication algorithms have been implemented: a naive algorith
 
 ### Naive Algorithm
 
-...
+The naive algorithm is a brute force approach to polynomial multiplication. It loops through two arrays representing the coefficients of each polynomial and multiplies them together.
 
-### FFT Algorithm
+For more information, see the [Mutliply two polynomials](https://www.geeksforgeeks.org/multiply-two-polynomials-2/) post at GeeksforGeeks.
 
-...
+### Fast Fourier Transform (FFT) Algorithm
+
+The FFT algorithm is more efficient approach to polynomial multiplication. It relies on converting the polynomials from a coefficient representation to a point-value representation, performing the multiplication, then converting back to a coefficient representation by taking the discrete Fourier transform and inverse discrete Fourier transform, respectively, and implementing a divide and conquer strategy.
+
+For more information, see the [Fast Fourier Transformation for polynomial multiplication](https://www.geeksforgeeks.org/fast-fourier-transformation-poynomial-multiplication/) post at GeeksforGeeks.
 
 ## Testing
 
