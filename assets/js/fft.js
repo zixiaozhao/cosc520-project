@@ -36,4 +36,20 @@ function difference(a, b){
     c.y = a.y - b.y
     return c
 }
- 
+
+function conjugate(a){
+    let c =new complex(0, 0);
+    c.x = a.x
+    c.y = -a.y
+    return c
+}
+
+var omega = new Array();
+var omegaInverse = new Array();
+
+function omega(n){
+  for ( int i = 0 ; i < n ; ++ i )  {
+            omega [i] = new complex ( cos ( 2 * PI / n * i), sin ( 2 * PI / n * i ) ) ;
+            omegaInverse [i] = conjugate(omega [i]);
+  }
+}
