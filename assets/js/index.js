@@ -76,7 +76,7 @@ function runPerformanceTest() {
     start = performance.now();
     for (var j = 0; j < iterations; j++) {
       console.log("...testing fft algorithm");
-      // fft.multiply(polyOneArrs[i], polyTwoArrs[i]);
+      fft.multiply(polyOneArrs[i], polyTwoArrs[i]);
     }
     stop = performance.now();
     avgTimesFFT.push((stop - start) / iterations);
@@ -86,8 +86,8 @@ function runPerformanceTest() {
   for (var i = 0; i < inputLengths.length; i++) {
     document.getElementById("results-perf-naive-" + i).innerHTML =
       avgTimesNaive[i].toFixed(3);
-    // document.getElementById("results-perf-fft-" + i).innerHTML =
-    //   avgTimesFFT[i].toFixed(3);
+    document.getElementById("results-perf-fft-" + i).innerHTML =
+      avgTimesFFT[i].toFixed(3);
   }
 }
 
