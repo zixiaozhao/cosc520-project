@@ -1,108 +1,79 @@
-class complex{
-    constructor(a, b = 0){
-        this.x = a;
-        this.y = b;
+import ComplexNumber from 'ComplexNumber';
+import bitLength from 'bitLength';
+
+export function multiply(polyOne, polyTwo){
+
+    var n = polyOne.length > polyTwo.length ? findTableSizeof2(polyOne.length*2) : findTableSizeof2(polyTwo.length*2)
+
+    let x = [];
+    let y = [];
+
+    for(var i = 0; i < n; i++){
+        x.push(polyOne[i] ? new ComplexNumber({re:parseInt(polyOne[i]), im: 0}) : new ComplexNumber({}))
+        y.push(polyTwo[i] ? new ComplexNumber({re:parseInt(polyTwo[i]), im: 0}) : new ComplexNumber({}))
     }
-}
- 
-function product(a, b){
-    let c =new complex(0, 0);
-    c.x = a.x * b.x - a.y * b.y
-    c.y = a.x * b.y + b.x * a.y
-    return c
+    
+
+    let xr = FFT(x)
+    let yr = FFT(y)
+    var rc = xr.map((v, i) => v.multiply(yr[i]));
+    let c = FFT(rc, true)
+    let output = c.map(v => Math.round(v.re))
+
+    return output;
 }
 
-function divide(a, b){
-    let c =new complex(0, 0);
-    c.x = a.x/b
-    c.y = a.y/b
-    return c
+function findTableSizeof2(target){
+    temp = target -1;
+    temp |= temp >> 1;
+    temp |= temp >> 2;
+    temp |= temp >> 4;
+    temp |= temp >> 8;
+    temp |= temp >> 16;
+    return (temp < 0) ? 1 : temp + 1;
 }
 
-function sum(a, b){
-    let c = new complex(0, 0);
-    c.x = a.x + b.x
-    c.y = a.y + b.y
-    return c
-}
- 
-function difference(a, b){
-    let c =new complex(0, 0);
-    c.x = a.x - b.x
-    c.y = a.y - b.y
-    return c
-}
-
-function conjugate(a){
-    let c =new complex(0, 0);
-    c.x = a.x
-    c.y = -a.y
-    return c
-}
-
-
-function fft(a)
-{
-    let n = a.length;
-    // if input contains just one element
-    if (n == 1)
-        return [a[0]]
- 
-    // For storing n complex nth roots of unity
-    let w = new Array(n);
-    let alpha = -2 * Math.PI / n;
-    for (var i = 0; i < n; i++) {
-        w[i] = new complex(Math.cos(alpha * i), Math.sin(alpha * i));
+function FFT(inputData, inverse = false) {
+    const bitsCount = bitLength(inputData.length - 1);
+    const N = 1 << bitsCount;
+  
+    while (inputData.length < N) {
+      inputData.push(new ComplexNumber());
     }
-
-    let A0 = new Array(Math.floor(n / 2));
-    let A1 = new Array(Math.floor(n / 2));
-    for (var i = 0; i < Math.floor(n / 2); i++) {
- 
-        // even indexed coefficients
-        A0[i] = a[i * 2];
- 
-        // odd indexed coefficients
-        A1[i] = a[i * 2 + 1];
+  
+    const output = [];
+    for (let dataSampleIndex = 0; dataSampleIndex < N; dataSampleIndex += 1) {
+      output[dataSampleIndex] = inputData[reverseBits(dataSampleIndex, bitsCount)];
     }
-    // Recursive call for even indexed coefficients
-    let y0 = fft(A0);
- 
-    // Recursive call for odd indexed coefficients
-    let y1 = fft(A1);
- 
-    // for storing values of y0, y1, y2, ..., yn-1.
-    let y = new Array(n);
- 
-    for (var k = 0; k < Math.floor(n / 2); k++) {
-         
-        y[k] =  sum(y0[k], product(w[k], y1[k]));
-        y[k + Math.floor(n / 2)] = difference(y0[k], product(w[k], y1[k]));
+  
+    for (let blockLength = 2; blockLength <= N; blockLength *= 2) {
+      const imaginarySign = inverse ? -1 : 1;
+      const phaseStep = new ComplexNumber({
+        re: Math.cos((2 * Math.PI) / blockLength),
+        im: imaginarySign * Math.sin((2 * Math.PI) / blockLength),
+      });
+      for (let blockStart = 0; blockStart < N; blockStart += blockLength) {
+        let phase = new ComplexNumber({ re: 1, im: 0 });
+  
+        for (let signalId = blockStart; signalId < (blockStart + blockLength / 2); signalId += 1) {
+          const component = output[signalId + blockLength / 2].multiply(phase);
+  
+          const upd1 = output[signalId].add(component);
+          const upd2 = output[signalId].subtract(component);
+  
+          output[signalId] = upd1;
+          output[signalId + blockLength / 2] = upd2;
+  
+          phase = phase.multiply(phaseStep);
+        }
+      }
     }
-    return y;
-}
-let a = [ new complex(1, 0), new complex(2, 0), new complex(3, 0), new complex(4, 0)];
-//let x = [ new complex(1, 0), new complex(0, 0), new complex(0, 0), new complex(0, 0)];
-let b = fft(a);
-console.log(b)
-for (var i = 0; i < b.length;i++){
-    b[i] = product(b[i], x[i])}
-console.log(b)
-let c = fft(b)
-
-function multiplyFFT(a, b){
-    let a_f = fft(a);
-    let b_f = fft(b);
-    var c_f = []
-    for(var i=0; i < a_f.length; i++){
-        c_f[i] = product(a_f[i], b_f[i]);
+  
+    if (inverse) {
+      for (let signalId = 0; signalId < N; signalId += 1) {
+        output[signalId] = output[signalId].divide(N);
+      }
     }
-    console.log(c_f)
-    let c = fft(c_f)
-    console.log(c)
-    for(var i=0; i<a_f.length; i++){
-        c[i] = divide(c_f[i]/a_f.length);
-    }
-    console.log(c)
-    return c;
+  
+    return output;
 }
