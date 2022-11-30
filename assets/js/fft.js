@@ -24,7 +24,7 @@ export function multiply(polyOne, polyTwo){
 }
 
 function findTableSizeof2(target){
-    temp = target -1;
+    let temp = target -1;
     temp |= temp >> 1;
     temp |= temp >> 2;
     temp |= temp >> 4;
