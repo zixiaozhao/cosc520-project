@@ -1,5 +1,5 @@
 import * as naive from "./naive.js";
-// import * as fft from "./fft.js";
+import * as fft from "./fft.js";
 
 // Add event listeners.
 document
@@ -22,13 +22,13 @@ function multiplyPolynomials() {
 
   // Multiply the polynomials.
   var naiveArr = naive.multiply(polyOne, polyTwo);
-  // var fftArr = fft.multiply(polyOne, polyTwo);
+  var fftArr = fft.multiply(polyOne, polyTwo);
 
   // Display the output string in the browser window.
   document.getElementById("results-multi-naive").innerHTML =
     printPolynomial(naiveArr);
-  // document.getElementById("results-multi-fft").innerHTML =
-  //   printPolynomial(fftArr);
+  document.getElementById("results-multi-fft").innerHTML =
+    printPolynomial(fftArr);
 }
 
 function runPerformanceTest() {
