@@ -130,20 +130,20 @@ function transformPolynomialFormInputs() {
   return [polyOne.reverse(), polyTwo.reverse()];
 }
 
-function printPolynomial(poly) {
+ function printPolynomial(poly) {
   var str = "";
-
+  
   for (var i = 0; i < poly.length; i++) {
-    poly[i] = poly[i] || 0;
-
-    if (i === 0) {
-      str = " " + poly[i];
-    } else if (i === 1) {
-      str = poly[i] + "x +" + str;
-    } else {
-      str = poly[i] + "x^" + i + " + " + str;
-    }
+      poly[i] = poly[i] || 0;
+      if(poly[i] == 0) continue  
+      if (i === 0) {
+          str = " " + poly[i];
+      } else if (i === 1) {
+          str = poly[i] + "x +" + str;
+      } else {
+          str = poly[i] + "x^" + i + " + " + str;
+      }
   }
 
   return str;
-}
+ }
