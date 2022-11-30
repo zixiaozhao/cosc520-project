@@ -1,4 +1,3 @@
-import radianToDegree from 'adianToDegree';
 export default class ComplexNumber {
 
   constructor({ re = 0, im = 0 } = {}) {
