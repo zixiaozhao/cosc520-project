@@ -1,5 +1,5 @@
-import ComplexNumber from 'ComplexNumber';
-import bitLength from 'bitLength';
+import ComplexNumber from "./ComplexNumber.js";
+import bitLength from './bitLength.js';
 
 export function multiply(polyOne, polyTwo){
 
