@@ -77,3 +77,17 @@ function FFT(inputData, inverse = false) {
   
     return output;
 }
+
+  function reverseBits(input, bitsCount) {
+    let reversedBits = 0;
+  
+    for (let bitIndex = 0; bitIndex < bitsCount; bitIndex += 1) {
+      reversedBits *= 2;
+  
+      if (Math.floor(input / (1 << bitIndex)) % 2 === 1) {
+        reversedBits += 1;
+      }
+    }
+  
+    return reversedBits;
+  }
