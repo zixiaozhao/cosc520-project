@@ -7,10 +7,9 @@
 
 // Import algorithm functions to be tested.
 import * as naive from "../assets/js/naive.js";
-// import * as fft from "../assets/js/fft.js";
+import * as fft from "../assets/js/fft.js";
 
-// const algos = [naive.multiply, fft.multiply];
-const algos = [naive.multiply];
+const algos = [naive.multiply, fft.multiply];
 
 // TEST CASES
 // The algorithm index is injected into test case string with %#.
