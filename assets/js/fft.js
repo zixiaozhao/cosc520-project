@@ -1,3 +1,27 @@
+/*This code implements an iterative Fast Fourier Transform, referring to the following sources.
+* 1, Iterative Fast Fourier Transformation for polynomial multiplication from geeksforgeeks, 
+* https://www.geeksforgeeks.org/iterative-fast-fourier-transformation-polynomial-multiplication/
+* 2, Free small FFT in multiple languages, https://www.nayuki.io/page/free-small-fft-in-multiple-languages under the MIT License
+*
+* Permission is hereby granted, free of charge, to any person obtaining a copy of
+* this software and associated documentation files (the "Software"), to deal in
+* the Software without restriction, including without limitation the rights to
+* use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+* the Software, and to permit persons to whom the Software is furnished to do so,
+* subject to the following conditions:
+* - The above copyright notice and this permission notice shall be included in
+*   all copies or substantial portions of the Software.
+* - The Software is provided "as is", without warranty of any kind, express or
+*   implied, including but not limited to the warranties of merchantability,
+*   fitness for a particular purpose and noninfringement. In no event shall the
+*   authors or copyright holders be liable for any claim, damages or other
+*   liability, whether in an action of contract, tort or otherwise, arising from,
+*   out of or in connection with the Software or the use or other dealings in the
+*   Software.
+*
+*This code is also inspired by https://zhuanlan.zhihu.com/p/197450738
+*/
+
 import ComplexNumber from "./ComplexNumber.js";
 import {findSizeof2, bitLength, reverseBits} from "./bitOperation.js";
 
