@@ -1,4 +1,5 @@
 // functino that helps to find the closest power of 2 that is larger than the index
+// this method used some of ideas from this blog, https://www.geeksforgeeks.org/highest-power-2-less-equal-given-number/
 export function findSizeof2(index){
   let temp = index -1;
   temp |= temp >> 1;
