@@ -155,5 +155,9 @@ function printPolynomial(poly) {
     }
   }
 
+  if (str === "") {
+    str = "0";
+  }
+
   return str;
 }
