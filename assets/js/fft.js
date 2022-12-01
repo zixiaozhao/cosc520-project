@@ -3,7 +3,7 @@ import bitLength from "./bitLength.js";
 
 export function multiply(polyOne, polyTwo){
 
-    var n = polyOne.length > polyTwo.length ? findTableSizeof2(polyOne.length*2) : findTableSizeof2(polyTwo.length*2)
+    var n = polyOne.length > polyTwo.length ? findSizeof2(polyOne.length*2) : findSizeof2(polyTwo.length*2)
 
     let x = [];
     let y = [];
@@ -23,7 +23,7 @@ export function multiply(polyOne, polyTwo){
     return output;
 }
 
-function findTableSizeof2(target){
+function findSizeof2(target){
     let temp = target -1;
     temp |= temp >> 1;
     temp |= temp >> 2;
@@ -36,10 +36,6 @@ function findTableSizeof2(target){
 function FFT(inputData, inverse = false) {
     const bitsCount = bitLength(inputData.length - 1);
     const N = 1 << bitsCount;
-  
-    while (inputData.length < N) {
-      inputData.push(new ComplexNumber());
-    }
   
     const output = [];
     for (let dataSampleIndex = 0; dataSampleIndex < N; dataSampleIndex += 1) {
