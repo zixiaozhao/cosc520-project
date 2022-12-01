@@ -1,5 +1,5 @@
 // functino that helps to find the closest power of 2 that is larger than the index
-function findSizeof2(index){
+export function findSizeof2(index){
   let temp = index -1;
   temp |= temp >> 1;
   temp |= temp >> 2;
