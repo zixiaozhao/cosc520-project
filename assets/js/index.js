@@ -1,3 +1,7 @@
+/*
+  A JavaScript module to handle passing information between the broswer window
+  and the algorithm implementations.
+*/
 import * as naive from "./naive.js";
 import * as fft from "./fft.js";
 
