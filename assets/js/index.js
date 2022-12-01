@@ -34,7 +34,7 @@ function multiplyPolynomials() {
 
 function runPerformanceTest() {
   // Define the list of input array lengths and the maximum value in each.
-  const inputLengths = [100, 500, 1000, 2500, 5000, 7500, 10000, 100000];
+  const inputLengths = [500, 1000, 2000, 4000, 8000, 16000, 32000, 64000];
   const maxValue = 100;
 
   // Generate input arrays of random integers at the defined lengths.
@@ -55,7 +55,7 @@ function runPerformanceTest() {
   }
 
   // Run timing tests.
-  const iterations = 25;
+  const iterations = 10;
   var avgTimesNaive = [];
   var avgTimesFFT = [];
   var start = 0;
