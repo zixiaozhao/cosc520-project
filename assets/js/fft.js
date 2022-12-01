@@ -26,6 +26,8 @@ import ComplexNumber from "./ComplexNumber.js";
 import {findSizeof2, bitLength, reverseBits} from "./bitOperation.js";
 
 export function multiply(polyOne, polyTwo){
+  var output_length = polyOne.length+polyTwo.length-1;
+  
   //get the length that is needed
   var n = polyOne.length > polyTwo.length ? findSizeof2(polyOne.length*2) : findSizeof2(polyTwo.length*2)
 
@@ -49,7 +51,7 @@ export function multiply(polyOne, polyTwo){
   let c = FFT(rc, true)
 
 
-  return c.map(v => Math.round(v.re)).slice(0,polyTwo.length+polyTwo.length-1);
+  return c.map(v => Math.round(v.re)).slice(0,output_length);
 }
 
 //Iterative FFT to culculate the DFT of given coefficient of a array
