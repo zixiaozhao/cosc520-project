@@ -15,7 +15,8 @@ document
   .getElementById("btn-clr-perf")
   .addEventListener("click", clearPerformanceResults);
 
-// Event listener functions
+// Event listener functions.
+// ----------------------------------------------------------------------------
 function multiplyPolynomials() {
   // Retrieve polynomial coefficients from import form.
   const [polyOne, polyTwo] = transformPolynomialFormInputs();
@@ -92,7 +93,7 @@ function runPerformanceTest() {
 }
 
 function clearMultiplicationResults() {
-  // Clear the output string in the browser window.
+  // Clear the multiplication output string in the browser window.
   document.getElementById("results-multi-naive").innerHTML = "-";
   document.getElementById("results-multi-fft").innerHTML = "-";
 }
@@ -103,7 +104,7 @@ function clearPerformanceResults() {
     '[id^="results-perf-naive-"]'
   ).length;
 
-  // Loop through and clear table data in the browser window.
+  // Loop through and clear performance table data in the browser window.
   for (var i = 0; i < columns; i++) {
     document.getElementById("results-perf-naive-" + i).innerHTML = "-";
     document.getElementById("results-perf-fft-" + i).innerHTML = "-";
@@ -111,6 +112,7 @@ function clearPerformanceResults() {
 }
 
 // Helper functions
+// ----------------------------------------------------------------------------
 function transformPolynomialFormInputs() {
   const inputOne = document.getElementsByName("polyOne[]");
   const inputTwo = document.getElementsByName("polyTwo[]");
@@ -130,20 +132,28 @@ function transformPolynomialFormInputs() {
   return [polyOne.reverse(), polyTwo.reverse()];
 }
 
- function printPolynomial(poly) {
+function printPolynomial(poly) {
   var str = "";
-  
+
+  // Loop through coefficients and generate output string.
   for (var i = 0; i < poly.length; i++) {
-      poly[i] = poly[i] || 0;
-      if(poly[i] == 0) continue  
-      if (i === 0) {
-          str = " " + poly[i];
-      } else if (i === 1) {
-          str = poly[i] + "x +" + str;
-      } else {
-          str = poly[i] + "x^" + i + " + " + str;
-      }
+    // If the coefficient is missing, set it to zero.
+    poly[i] = poly[i] || 0;
+
+    // Skip zero coefficient terms.
+    if (poly[i] == 0) continue;
+
+    if (i === 0) {
+      // Constant term, no x.
+      str = " " + poly[i];
+    } else if (i === 1) {
+      // x^1 term.
+      str = poly[i] + "x +" + str;
+    } else {
+      // x^2 and higher terms.
+      str = poly[i] + "x^" + i + " + " + str;
+    }
   }
 
   return str;
- }
+}
