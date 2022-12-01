@@ -1,5 +1,5 @@
 import ComplexNumber from "./ComplexNumber.js";
-import * from "./bitOperation.js";
+import {findSizeof2, reverseBits, bitLength} from "./bitOperation.js";
 
 export function multiply(polyOne, polyTwo){
   //get the length that is needed
