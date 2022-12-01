@@ -24,9 +24,10 @@ export function multiply(polyOne, polyTwo) {
   var prod = [];
 
   // Set the product array to all zeros.
-  // The size of the product array equals the largest power of x in the result,
-  // which is the sum of the largest power of x in both polynomials and is
-  // equivalent to the sum of the sizes of the inputs, m + n.
+  // The size of the product array equals the largest power of x + 1 (constant
+  // term) in the result, which is the sum of the largest power of x in both 
+  // polynomials + 1 (constant term) and is equivalent to the sum of the sizes 
+  // of the inputs - 1, m + n - 1.
   for (var i = 0; i < m + n - 1; i++) prod[i] = 0;
 
   // Loop through the two arrays and multiply the values at each index.
